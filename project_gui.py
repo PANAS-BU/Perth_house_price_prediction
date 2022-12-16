@@ -37,7 +37,7 @@ def predict():
 #Window 
 root = Tk()
 root.geometry("600x750")
-root.title("Perth House Price Prediction")
+root.title("Foretell.AI")
 
 #Variables, Lists
 bedroomsCountList = ["Select",1,2,3,4,5,6,7,8,9,10]
