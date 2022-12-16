@@ -36,7 +36,7 @@ def predict():
 
 #Window 
 root = Tk()
-root.geometry("600x700")
+root.geometry("600x750")
 root.title("Perth House Price Prediction")
 
 #Variables, Lists
@@ -97,11 +97,11 @@ buildYearMenu = OptionMenu(root, valueInsideBuildYear, *buildYearCountList)
 buildYearMenu.pack()
 
 #Prediction
-Label(root, pady= 10).pack()
+Label(root, pady=5).pack()
 predictButton = Button(root, text='Predict', bd='5', command=predict).pack()
 
 predictionBox = Entry(root, textvariable=predictionBoxVar, font=('calibre',12))
-predictionBox.pack()
+predictionBox.pack(pady=20)
 
 #Main Loop
 root.mainloop()
