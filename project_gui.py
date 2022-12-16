@@ -1,4 +1,38 @@
 from tkinter import *
+import project
+
+#functions
+def predict():
+    #Land Area Value
+    landAreaValue = landAreaInput.get()
+    landAreaValue = float(landAreaValue)
+
+    #Floor Area Value
+    floorAreaValue = floorAreaInput.get()
+    floorAreaValue = float(floorAreaValue)
+
+    #Bedrooms Count
+    bedroomsMenuValue = valueInsideBedrooms.get()
+    bedroomsMenuValue = int(bedroomsMenuValue)
+
+    #Bathrooms Count
+    bathroomsMenuValue = valueInsideBathrooms.get()
+    bathroomsMenuValue = int(bathroomsMenuValue)
+
+    #Garage Count
+    garageMenuValue = valueInsideGarage.get()
+    garageMenuValue = int(garageMenuValue)
+
+    #Build Year
+    buildYearMenuValue = valueInsideBuildYear.get()
+    buildYearMenuValue = int(buildYearMenuValue)
+
+    predictedValue = project.model(landAreaValue, floorAreaValue, bedroomsMenuValue, bathroomsMenuValue, garageMenuValue, buildYearMenuValue)
+
+    predictedValue = float(predictedValue)
+
+    predictionBoxVar.set(predictedValue)
+    print(predictedValue)
 
 #Window 
 root = Tk()
@@ -19,45 +53,55 @@ for i in range(1868, 2021):
     buildYearCountList.append(i)
 buildYearCountList.insert(0, "Select")
 
+predictionBoxVar = StringVar()
+
 #Main Heading
 mainHeading = Label(root, text="Perth House Price Prediction", font=("Arial", 25), pady=20).pack()
 
 #Land Area
 landAreaLabel = Label(root, text="Land Area in Sq ft", font=("Arial", 15), pady=20).pack()
-landAreaInput = Entry(root, font=('calibre',12)).pack()
+landAreaInput = Entry(root, font=('calibre',12))
+landAreaInput.pack()
 
 #Floor Area
 floorAreaLabel = Label(root, text="Floor Area in Sq ft", font=("Arial", 15), pady=20).pack()
-floorAreaInput = Entry(root, font=('calibre',12)).pack()
+floorAreaInput = Entry(root, font=('calibre',12))
+floorAreaInput.pack()
 
 #Bedrooms
 bedroomsLabel = Label(root, text="Bedrooms", font=("Arial", 15), pady=20).pack()
 valueInsideBedrooms = StringVar(root)
 valueInsideBedrooms.set("Select")
-bedroomsMenu = OptionMenu(root, valueInsideBedrooms, *bedroomsCountList).pack()
+bedroomsMenu = OptionMenu(root, valueInsideBedrooms, *bedroomsCountList)
+bedroomsMenu.pack()
 
 #Bathrooms
 bathroomsLabel = Label(root, text="Bathrooms", font=("Arial", 15), pady=20).pack()
 valueInsideBathrooms = StringVar(root)
 valueInsideBathrooms.set("Select")
-bedroomsMenu = OptionMenu(root, valueInsideBathrooms, *bathroomsCountList).pack()
+bathroomsMenu = OptionMenu(root, valueInsideBathrooms, *bathroomsCountList)
+bathroomsMenu.pack()
 
 #Garage
 garageLabel = Label(root, text="Garage", font=("Arial", 15), pady=20).pack()
 valueInsideGarage = StringVar(root)
 valueInsideGarage.set("Select")
-bedroomsMenu = OptionMenu(root, valueInsideGarage, *garageCountList).pack()
+garageMenu = OptionMenu(root, valueInsideGarage, *garageCountList)
+garageMenu.pack()
 
 #Build Year
 buildYearLabel = Label(root, text="Build Year", font=("Arial", 15), pady=20).pack()
 valueInsideBuildYear = StringVar(root)
 valueInsideBuildYear.set("Select")
-bedroomsMenu = OptionMenu(root, valueInsideBuildYear, *buildYearCountList).pack()
+buildYearMenu = OptionMenu(root, valueInsideBuildYear, *buildYearCountList)
+buildYearMenu.pack()
 
 #Prediction
 Label(root, pady= 10).pack()
-predictButton = Button(root, text='Predict', bd='5', command = root.destroy).pack()
-predictionBox = Entry(root, font=('calibre',12)).pack()
+predictButton = Button(root, text='Predict', bd='5', command=predict).pack()
+
+predictionBox = Entry(root, textvariable=predictionBoxVar, font=('calibre',12))
+predictionBox.pack()
 
 #Main Loop
 root.mainloop()
