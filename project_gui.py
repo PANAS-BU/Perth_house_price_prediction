@@ -40,10 +40,18 @@ root.title("Foretell.AI")
 root.config(bg="white")
 
 #Variables, Lists
-bedroomsCountList = ["Select",1,2,3,4,5,6,7,8,9,10]
-bathroomsCountList = ["Select",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+bedroomsCountList = []
+bathroomsCountList = []
 garageCountList = []
 buildYearCountList = []
+
+for i in range(1,11):
+    bedroomsCountList.append(i)
+bedroomsCountList.insert(0, "Select")
+
+for i in range(1,17):
+    bathroomsCountList.append(i)
+bathroomsCountList.insert(0, "Select")
 
 for i in range(1,11):
     garageCountList.append(i)
