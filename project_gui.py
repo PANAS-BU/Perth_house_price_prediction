@@ -32,7 +32,6 @@ def predict():
     predictedValue = float(predictedValue)
 
     predictionBoxVar.set(predictedValue)
-    print(predictedValue)
 
 #Window 
 root = Tk()
@@ -69,7 +68,7 @@ floorAreaLabel = Label(root, text="Floor Area in Sq ft", font=("Arial", 15), pad
 floorAreaInput = Entry(root, font=('calibre',12), bg="pink", fg="black")
 floorAreaInput.pack()
 
-#Bedrooms
+#Bedrooms Option Menu
 bedroomsLabel = Label(root, text="Bedrooms", font=("Arial", 15), pady=20, bg="white", fg="black").pack()
 valueInsideBedrooms = StringVar(root)
 valueInsideBedrooms.set("Select")
@@ -77,7 +76,7 @@ bedroomsMenu = OptionMenu(root, valueInsideBedrooms, *bedroomsCountList)
 bedroomsMenu.config(bg="white", fg="black")
 bedroomsMenu.pack()
 
-#Bathrooms
+#Bathrooms Option Menu
 bathroomsLabel = Label(root, text="Bathrooms", font=("Arial", 15), pady=20, bg="white", fg="black").pack()
 valueInsideBathrooms = StringVar(root)
 valueInsideBathrooms.set("Select")
@@ -85,7 +84,7 @@ bathroomsMenu = OptionMenu(root, valueInsideBathrooms, *bathroomsCountList)
 bathroomsMenu.pack()
 bathroomsMenu.config(bg="white", fg="black")
 
-#Garage
+#Garage Option Menu
 garageLabel = Label(root, text="Garage", font=("Arial", 15), pady=20, bg="white", fg="black").pack()
 valueInsideGarage = StringVar(root)
 valueInsideGarage.set("Select")
@@ -93,7 +92,7 @@ garageMenu = OptionMenu(root, valueInsideGarage, *garageCountList)
 garageMenu.config(bg="white", fg="black")
 garageMenu.pack()
 
-#Build Year
+#Build Year Option Menu
 buildYearLabel = Label(root, text="Build Year", font=("Arial", 15), pady=20, bg="white", fg="black").pack()
 valueInsideBuildYear = StringVar(root)
 valueInsideBuildYear.set("Select")
@@ -101,14 +100,15 @@ buildYearMenu = OptionMenu(root, valueInsideBuildYear, *buildYearCountList)
 buildYearMenu.config(bg="white", fg="black")
 buildYearMenu.pack()
 
-#Prediction
-Label(root, pady=5, bg="white", fg="black").pack()
+#Prediction UI area
 
-predictButton = Button(root, text='Predict', bd='5', bg="black", fg="white", command=predict)
-predictButton.pack()
+predictButton = Button(root, text='Predict', highlightbackground="white", fg="black", bg="black", activebackground="red", borderwidth=0, command=predict)
+predictButton.pack(pady=22)
+
 
 predictionBox = Entry(root, textvariable=predictionBoxVar, font=('calibre',12), bg="pink", fg="black")
-predictionBox.pack(pady=20)
+predictionBox.pack(pady=10)
+australianDollar = Label(root, text="Price in AUD (Australian Dollar)", bg="white", fg="black").pack()
 
 #Main Loop
 root.mainloop()
