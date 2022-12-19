@@ -47,15 +47,13 @@ buildYearCountList = []
 
 for i in range(1,11):
     bedroomsCountList.append(i)
+    garageCountList.append(i)
 bedroomsCountList.insert(0, "Select")
+garageCountList.insert(0, "Select")
 
 for i in range(1,17):
     bathroomsCountList.append(i)
 bathroomsCountList.insert(0, "Select")
-
-for i in range(1,11):
-    garageCountList.append(i)
-garageCountList.insert(0, "Select")
 
 for i in range(1868, 2021):
     buildYearCountList.append(i)
